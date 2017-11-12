@@ -6,12 +6,7 @@ const env = process.env.NODE_ENV || 'development';
 const config    = require('../config/config')[env];
 const db = {};
 
-let sequelize;
-if (env === 'production') {
-	sequelize = new Sequelize(config.url);
-} else {
-	sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+let sequelize = new Sequelize(config.url);
 
 fs
 	.readdirSync(__dirname)
