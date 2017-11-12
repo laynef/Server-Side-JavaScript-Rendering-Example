@@ -1,0 +1,48 @@
+const constants = [
+	'LOGIN',
+	'LOGOUT',
+	'REGISTER',
+	'CHANGE_PASSWORD',
+	'CHANGE_FORGOTTEN_PASSWORD',
+	'GET_USER',
+	'REFRESH',
+	'GET_MESSAGES',
+	'CREATE_MESSAGES',
+	'GET_PHOTO',
+	'CREATE_PHOTO',
+	'GET_ALBUM',
+	'CREATE_ALBUM',
+	'FILE_UPLOAD',
+	'GET_NOTIFICATION',
+	'GET_PROFILE',
+	'UPDATE_PROFILE',
+	'GET_BLACK_LIST',
+	'CREATE_BLACK_LIST',
+	'UPDATE_BLACK_LIST',
+	'GET_REVIEW',
+	'CREATE_REVIEW',
+	'UPDATE_REVIEW',
+	'DELETE_REVIEW',
+	'GET_COMMENT',
+	'CREATE_COMMENT',
+	'DELETE_COMMENT',
+	'UPDATE_COMMENT',
+	'GET_BLOG',
+	'CREATE_BLOG',
+	'DELETE_BLOG',
+	'UPDATE_BLOG',
+	'GET_FOLLOWING',
+	'GET_FOLLOWER',
+	'CREATE_FOLLOWING',
+	'UPDATE_FOLLOWING',
+	'DELETE_FOLLOWING',
+];
+
+const data = constants.reduce((acc, item) => {
+	acc[`${item}_PENDING`] = `${item}_PENDING`;
+	acc[`${item}_SUCCESS`] = `${item}_SUCCESS`;
+	acc[`${item}_ERROR`] = `${item}_ERROR`;
+	return acc;
+}, {});
+
+export const  actionTypes = data;

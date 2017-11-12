@@ -1,0 +1,19 @@
+machine:
+    timezone:
+        America/Los_Angeles
+    node:
+        version: 8.4.0
+    environment:
+        CONTINUOUS_INTEGRATION: true
+        # ENV Variables here
+
+dependencies:
+    cache_directories:
+        - node_modules
+    override:
+        - npm install
+
+test:
+    override:
+        - npm run lint
+        - npm test

@@ -1,0 +1,20 @@
+{
+    "presets": [
+        "react",
+        "es2015",
+        "stage-0",
+        "airbnb"
+    ],
+    "plugins": [
+        "transform-runtime",
+        "add-module-exports",
+        "transform-decorators-legacy",
+        "transform-react-display-name",
+        ["transform-imports", {
+            "reactstrap": {
+                "transform": "reactstrap/lib/${member}",
+                "preventFullImport": true
+            }
+        }]
+    ]
+}
