@@ -19,7 +19,15 @@ import getRoutes from './routes/router';
 import parser from 'body-parser';
 import { __HASHID__ } from './globals';
 import sess from 'express-session';
+import helmet from 'helmet';
+import RateLimit from 'express-rate-limit';
 
+
+let limiter = new RateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 100, // limit each IP to 100 requests per windowMs
+	delayMs: 0, // disable delaying - full speed until the max limit is reached
+});
 
 // Express servers
 const app = new Express();
@@ -40,6 +48,8 @@ app.set('view engine', 'pug');
 app.use('/assets', Express.static(path.join(__dirname, '..', 'assets')));
 app.use(Express.static(path.join(__dirname, '..', 'assets', 'dist')));
 app.use(favicon(path.join(__dirname, '..', 'assets','img','favicon.ico')));
+app.use(limiter);
+app.use(helmet());
 app.use(cors());
 app.use(morgan('dev'));
 app.use(parser.urlencoded({ extended: true}));
